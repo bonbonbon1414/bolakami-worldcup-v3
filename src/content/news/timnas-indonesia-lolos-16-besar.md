@@ -4,7 +4,6 @@ excerpt: "Sejarah baru tercipta. Garuda memastikan satu tempat di fase gugur set
 category: "Timnas"
 author: "Dewi Lestari"
 time: "45 menit lalu"
-emoji: "🇮🇩"
 order: 2
 ---
 

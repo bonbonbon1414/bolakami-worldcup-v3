@@ -4,7 +4,6 @@ excerpt: "Persaingan sepatu emas memanas memasuki pekan kedua turnamen."
 category: "Statistik"
 author: "Tim Bolakami"
 time: "2 jam lalu"
-emoji: "👟"
 order: 4
 ---
 

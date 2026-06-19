@@ -1,5 +1,6 @@
 import { todayMatches, type Match } from "@/lib/data";
 import Button from "./ui/Button";
+import Flag from "./ui/Flag";
 import SectionHeading from "./SectionHeading";
 
 const statusMeta: Record<Match["status"], { label: string; cls: string }> = {
@@ -12,7 +13,6 @@ export default function Schedule() {
 	return (
 		<section id="jadwal" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
 			<SectionHeading
-				kicker="19 Juni 2026"
 				title="Jadwal Piala Dunia Hari Ini"
 				action={
 					<Button variant="texted" size="sm" className="hidden sm:inline-flex">
@@ -71,7 +71,7 @@ function TeamRow({
 	return (
 		<div className="flex items-center justify-between">
 			<span className="flex items-center gap-3">
-				<span className="text-2xl">{team.flag}</span>
+				<Flag code={team.code} name={team.name} className="h-5 w-7" />
 				<span className={`text-sm ${winner ? "font-bold text-paper" : "font-medium text-space-300"}`}>
 					{team.name}
 				</span>

@@ -1,10 +1,11 @@
 import { standings, topScorers } from "@/lib/data";
+import Flag from "./ui/Flag";
 import SectionHeading from "./SectionHeading";
 
 export default function Standings() {
 	return (
 		<section id="klasemen" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-			<SectionHeading kicker="Grup C" title="Klasemen & Top Skor" />
+			<SectionHeading title="Klasemen & Top Skor" />
 
 			<div className="grid gap-6 lg:grid-cols-3">
 				{/* Standings table — spans 2 of 3 columns */}
@@ -42,7 +43,7 @@ export default function Standings() {
 										</td>
 										<td className="px-2 py-3">
 											<span className="flex items-center gap-2 font-semibold text-paper">
-												<span className="text-lg">{row.flag}</span>
+												<Flag code={row.code} name={row.team} className="h-4 w-6" />
 												{row.team}
 											</span>
 										</td>
@@ -81,7 +82,7 @@ export default function Standings() {
 								<span className="w-5 text-center text-sm font-bold text-space-400">
 									{i + 1}
 								</span>
-								<span className="text-xl">{s.flag}</span>
+								<Flag code={s.code} name={s.team} className="h-5 w-7" />
 								<div className="min-w-0 flex-1">
 									<p className="truncate text-sm font-semibold text-paper">
 										{s.name}

@@ -4,7 +4,6 @@ excerpt: "Lionel Messi kembali jadi penentu saat Argentina mengalahkan Brasil 2-
 category: "Piala Dunia"
 author: "Rangga Aditya"
 time: "12 menit lalu"
-emoji: "🐐"
 order: 1
 featured: true
 ---

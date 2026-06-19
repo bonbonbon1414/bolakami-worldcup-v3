@@ -12,7 +12,6 @@ export type NewsMeta = {
 	category: string;
 	author: string;
 	time: string;
-	emoji: string;
 	order: number;
 	featured: boolean;
 };
@@ -32,7 +31,6 @@ function readRaw() {
 			category: data.category ?? "Berita",
 			author: data.author ?? "Tim Bolakami",
 			time: data.time ?? "",
-			emoji: data.emoji ?? "⚽",
 			order: typeof data.order === "number" ? data.order : 999,
 			featured: data.featured === true,
 		};

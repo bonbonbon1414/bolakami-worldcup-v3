@@ -4,7 +4,6 @@ excerpt: "Keputusan wasit menuai protes keras dari kubu lawan dan jadi perbincan
 category: "Kontroversi"
 author: "Indra Wijaya"
 time: "3 jam lalu"
-emoji: "📺"
 order: 5
 ---
 

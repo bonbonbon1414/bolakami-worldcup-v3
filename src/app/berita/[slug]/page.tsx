@@ -68,12 +68,8 @@ export default async function ArticlePage({
 						<span>{article.time}</span>
 					</div>
 
-					<div className="mt-6 grid h-56 place-items-center rounded-3xl border border-space-700 bg-gradient-to-br from-brand-700/30 via-space-800 to-space-900 text-7xl sm:h-72">
-						<span aria-hidden>{article.emoji}</span>
-					</div>
-
 					<div
-						className="article-body mt-8"
+						className="article-body mt-8 border-t border-space-700 pt-8"
 						dangerouslySetInnerHTML={{ __html: article.html }}
 					/>
 				</article>

@@ -8,7 +8,7 @@ const categories = ["Semua", "Piala Dunia", "Timnas", "Transfer", "Preview", "Hi
 export default function NewsSection() {
 	const news = getAllNews();
 	const featured = news.find((n) => n.featured) ?? news[0];
-	const rest = news.filter((n) => n.slug !== featured.slug);
+	const rest = news.filter((n) => n.slug !== featured.slug).slice(0, 6);
 
 	return (
 		<section
@@ -17,7 +17,6 @@ export default function NewsSection() {
 		>
 			<div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
 				<SectionHeading
-					kicker="Update Harian"
 					title="Berita Bola Terbaru"
 					action={
 						<Button variant="texted" size="sm" className="hidden sm:inline-flex">
@@ -60,23 +59,20 @@ function FeaturedCard({ news }: { news: NewsMeta }) {
 	return (
 		<Link
 			href={`/berita/${news.slug}`}
-			className="group flex flex-col overflow-hidden rounded-3xl border border-space-700 bg-space-800 transition-colors hover:border-brand-500/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60"
+			className="group flex flex-col justify-between rounded-3xl border border-space-700 bg-gradient-to-br from-space-800 to-space-900 p-7 transition-colors hover:border-brand-500/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60 sm:p-8"
 		>
-			<div className="relative grid h-56 place-items-center bg-gradient-to-br from-brand-700/30 via-space-800 to-space-900 text-7xl">
-				<span aria-hidden>{news.emoji}</span>
-				<span className="absolute left-4 top-4 rounded-full bg-brand-500 px-3 py-1 text-xs font-bold text-space-950">
+			<div>
+				<span className="inline-flex rounded-full bg-brand-500 px-3 py-1 text-xs font-bold text-space-950">
 					{news.category}
 				</span>
-			</div>
-			<div className="flex flex-1 flex-col p-6">
-				<h3 className="font-display text-xl font-extrabold leading-snug text-paper transition-colors group-hover:text-brand-500">
+				<h3 className="mt-5 font-display text-2xl font-extrabold leading-tight text-paper transition-colors group-hover:text-brand-500 sm:text-3xl">
 					{news.title}
 				</h3>
-				<p className="mt-3 flex-1 text-sm leading-relaxed text-space-300">
+				<p className="mt-4 max-w-prose text-base leading-relaxed text-space-300">
 					{news.excerpt}
 				</p>
-				<Meta news={news} />
 			</div>
+			<Meta news={news} />
 		</Link>
 	);
 }
@@ -85,20 +81,15 @@ function CompactCard({ news }: { news: NewsMeta }) {
 	return (
 		<Link
 			href={`/berita/${news.slug}`}
-			className="group flex gap-4 rounded-2xl border border-space-700 bg-space-800 p-4 transition-colors hover:border-brand-500/50 hover:bg-space-700/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60"
+			className="group flex flex-col rounded-2xl border border-space-700 bg-space-800 p-4 transition-colors hover:border-brand-500/50 hover:bg-space-700/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60"
 		>
-			<div className="grid h-20 w-20 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-brand-700/25 to-space-900 text-3xl">
-				<span aria-hidden>{news.emoji}</span>
-			</div>
-			<div className="min-w-0 flex-1">
-				<span className="text-[11px] font-bold uppercase tracking-wide text-brand-500">
-					{news.category}
-				</span>
-				<h3 className="mt-1 line-clamp-2 text-sm font-bold leading-snug text-paper transition-colors group-hover:text-brand-500">
-					{news.title}
-				</h3>
-				<Meta news={news} compact />
-			</div>
+			<span className="text-[11px] font-bold uppercase tracking-wide text-brand-500">
+				{news.category}
+			</span>
+			<h3 className="mt-1 line-clamp-2 text-sm font-bold leading-snug text-paper transition-colors group-hover:text-brand-500">
+				{news.title}
+			</h3>
+			<Meta news={news} compact />
 		</Link>
 	);
 }

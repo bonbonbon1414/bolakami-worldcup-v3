@@ -4,7 +4,6 @@ excerpt: "Dua raksasa Eropa bertemu malam ini. Siapa yang akan menguasai lini te
 category: "Preview"
 author: "Bayu Saputra"
 time: "1 jam lalu"
-emoji: "⚔️"
 order: 3
 ---
 
