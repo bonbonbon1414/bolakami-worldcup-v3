@@ -33,13 +33,14 @@
 	},
 	"private": true,
 	"scripts": {
-		"build": "next build",
+		"build": "node scripts/generate-news.mjs && next build",
 		"cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
 		"check": "npm run build && tsc",
-		"deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-		"dev": "next dev",
+		"deploy": "node scripts/generate-news.mjs && opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+		"dev": "node scripts/generate-news.mjs && next dev",
+		"gen:news": "node scripts/generate-news.mjs",
 		"lint": "next lint",
-		"preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+		"preview": "node scripts/generate-news.mjs && opennextjs-cloudflare build && opennextjs-cloudflare preview",
 		"start": "next start"
 	}
 }
