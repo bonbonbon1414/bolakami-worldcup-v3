@@ -10,16 +10,6 @@ export type Match = {
 	status: MatchStatus;
 };
 
-export type News = {
-	id: string;
-	title: string;
-	excerpt: string;
-	category: string;
-	author: string;
-	time: string;
-	emoji: string;
-};
-
 export type StandingRow = {
 	pos: number;
 	team: string;
@@ -86,59 +76,6 @@ export const todayMatches: Match[] = [
 		time: "FT",
 		venue: "Hard Rock Stadium",
 		status: "finished",
-	},
-];
-
-export const latestNews: News[] = [
-	{
-		id: "n1",
-		title: "Messi Cetak Brace, Argentina Pimpin Grup C di Laga Panas Lawan Brasil",
-		excerpt:
-			"Lionel Messi kembali jadi penentu saat Argentina mengalahkan Brasil 2-1 dalam laga klasik Amerika Selatan yang berlangsung sengit hingga menit akhir.",
-		category: "Piala Dunia",
-		author: "Rangga Aditya",
-		time: "12 menit lalu",
-		emoji: "🐐",
-	},
-	{
-		id: "n2",
-		title: "Resmi: Timnas Indonesia Lolos ke Babak 16 Besar untuk Pertama Kali",
-		excerpt:
-			"Sejarah baru tercipta. Garuda memastikan satu tempat di fase gugur setelah hasil imbang yang dramatis.",
-		category: "Timnas",
-		author: "Dewi Lestari",
-		time: "45 menit lalu",
-		emoji: "🇮🇩",
-	},
-	{
-		id: "n3",
-		title: "Prediksi Spanyol vs Jerman: Duel Tiki-Taka Melawan Efisiensi",
-		excerpt:
-			"Dua raksasa Eropa bertemu malam ini. Siapa yang akan menguasai lini tengah?",
-		category: "Preview",
-		author: "Bayu Saputra",
-		time: "1 jam lalu",
-		emoji: "⚔️",
-	},
-	{
-		id: "n4",
-		title: "Top Skor Sementara: Mbappé Memimpin dengan 5 Gol",
-		excerpt:
-			"Persaingan sepatu emas memanas memasuki pekan kedua turnamen.",
-		category: "Statistik",
-		author: "Tim Bolakami",
-		time: "2 jam lalu",
-		emoji: "👟",
-	},
-	{
-		id: "n5",
-		title: "VAR Jadi Sorotan Usai Penalti Kontroversial di Laga Portugal",
-		excerpt:
-			"Keputusan wasit menuai protes keras dari kubu lawan dan jadi perbincangan netizen.",
-		category: "Kontroversi",
-		author: "Indra Wijaya",
-		time: "3 jam lalu",
-		emoji: "📺",
 	},
 ];
 

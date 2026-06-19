@@ -1,11 +1,14 @@
-import { latestNews, type News } from "@/lib/data";
+import Link from "next/link";
+import { getAllNews, type NewsMeta } from "@/lib/news";
 import Button from "./ui/Button";
 import SectionHeading from "./SectionHeading";
 
 const categories = ["Semua", "Piala Dunia", "Timnas", "Transfer", "Preview", "Highlight"];
 
 export default function NewsSection() {
-	const [featured, ...rest] = latestNews;
+	const news = getAllNews();
+	const featured = news.find((n) => n.featured) ?? news[0];
+	const rest = news.filter((n) => n.slug !== featured.slug);
 
 	return (
 		<section
@@ -28,7 +31,8 @@ export default function NewsSection() {
 					{categories.map((c, i) => (
 						<button
 							key={c}
-							className={`shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+							aria-pressed={i === 0}
+							className={`min-h-[44px] shrink-0 cursor-pointer rounded-full px-4 text-sm font-medium transition-colors ${
 								i === 0
 									? "bg-brand-500 text-space-950"
 									: "border border-space-600 text-space-300 hover:border-brand-500/50 hover:text-paper"
@@ -43,7 +47,7 @@ export default function NewsSection() {
 					<FeaturedCard news={featured} />
 					<div className="flex flex-col gap-4">
 						{rest.map((n) => (
-							<CompactCard key={n.id} news={n} />
+							<CompactCard key={n.slug} news={n} />
 						))}
 					</div>
 				</div>
@@ -52,11 +56,14 @@ export default function NewsSection() {
 	);
 }
 
-function FeaturedCard({ news }: { news: News }) {
+function FeaturedCard({ news }: { news: NewsMeta }) {
 	return (
-		<article className="group flex flex-col overflow-hidden rounded-3xl border border-space-700 bg-space-800 transition-all hover:border-brand-500/50">
+		<Link
+			href={`/berita/${news.slug}`}
+			className="group flex flex-col overflow-hidden rounded-3xl border border-space-700 bg-space-800 transition-colors hover:border-brand-500/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60"
+		>
 			<div className="relative grid h-56 place-items-center bg-gradient-to-br from-brand-700/30 via-space-800 to-space-900 text-7xl">
-				{news.emoji}
+				<span aria-hidden>{news.emoji}</span>
 				<span className="absolute left-4 top-4 rounded-full bg-brand-500 px-3 py-1 text-xs font-bold text-space-950">
 					{news.category}
 				</span>
@@ -70,15 +77,18 @@ function FeaturedCard({ news }: { news: News }) {
 				</p>
 				<Meta news={news} />
 			</div>
-		</article>
+		</Link>
 	);
 }
 
-function CompactCard({ news }: { news: News }) {
+function CompactCard({ news }: { news: NewsMeta }) {
 	return (
-		<article className="group flex gap-4 rounded-2xl border border-space-700 bg-space-800 p-4 transition-all hover:border-brand-500/50 hover:bg-space-700/50">
+		<Link
+			href={`/berita/${news.slug}`}
+			className="group flex gap-4 rounded-2xl border border-space-700 bg-space-800 p-4 transition-colors hover:border-brand-500/50 hover:bg-space-700/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60"
+		>
 			<div className="grid h-20 w-20 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-brand-700/25 to-space-900 text-3xl">
-				{news.emoji}
+				<span aria-hidden>{news.emoji}</span>
 			</div>
 			<div className="min-w-0 flex-1">
 				<span className="text-[11px] font-bold uppercase tracking-wide text-brand-500">
@@ -89,16 +99,16 @@ function CompactCard({ news }: { news: News }) {
 				</h3>
 				<Meta news={news} compact />
 			</div>
-		</article>
+		</Link>
 	);
 }
 
-function Meta({ news, compact }: { news: News; compact?: boolean }) {
+function Meta({ news, compact }: { news: NewsMeta; compact?: boolean }) {
 	return (
 		<div
-			className={`flex items-center gap-2 text-xs text-space-400 ${compact ? "mt-2" : "mt-5"}`}
+			className={`flex items-center gap-2 text-xs text-space-300 ${compact ? "mt-2" : "mt-5"}`}
 		>
-			<span className="font-medium text-space-300">{news.author}</span>
+			<span className="font-medium text-paper">{news.author}</span>
 			<span>·</span>
 			<span>{news.time}</span>
 		</div>
